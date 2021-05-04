@@ -1,0 +1,34 @@
+André Paiva
+===========
+
+---------
+Exemplo 1
+---------
+
+Após execução do exemplo 1, o flag SF fica ativo, pois o valor de -128 está no acumulador (o que é perfeitamente possível para se representar em 8 bits na notação de complemento de 2).
+
+---------
+Exemplo 2
+---------
+
+Apos execução do exemplo 2, o flash OF fica ativo, pois a subtração resultaria em -129, valor que não é possível representar com 8 bits na notação de complemento de 2. Logo, a operação causa um overflow.
+
+---------
+Exemplo 3
+---------
+
+Após execução da linha 2 do exemplo 3, o flags OF e CF ficam ativos por que, e caso os valores envolvidos na operação fossem unsigned, a operação resultaria em um valor maior que 255. Em notação de complemento de 2, 5 = 11111011, e somado com 132 = 10000100, o valor resulta 101111111 (nove bits), no qual o bit 1 mais significativo é o bit carry (CF).
+
+Após execução da linha 3 do exemplo 3, os flags OF e SF ficam ativos por que, levando em conta que os valores envolvidos na operação são signed, está havendo uma soma entre +127 = 01111111 e +1 = 00000001, que resulta em +128, valor que não é possível representar em 8 bits (signed). A soma resulta em 10000000, com o bit mais significativo sendo tratado como bit de sinal (por isso o SF ativo).
+
+---------
+Exemplo 4
+---------
+
+Após execução do exemplo 4, AL é subtraído de si mesmo, resultando em 0 = 00000000. O flag PF está ativo por que, de fato, há uma quantidade par de bits 1 em AL; e o flag ZF, obviamente, por que AL contém o valor zero.
+
+---------
+Exemplo 5
+---------
+
+Após execução do exemplo 5, temos uma soma de valores unsigned que resulta em 256, valor que não é possível representar com apenas 8 bits. 256 = 100000000 (nove bits), sendo que o nono bit é o bit carry (CF). Como AL guarda apenas 8 bits, seu valor é o valor dos 8 bits menos significativos (ou seja, zero), o que justifica o flag ZF ativo. O flag OF está ativo devido ao overflow causado pela soma que resultou em um valor acima do máximo possível a ser representado por 8 bits.
