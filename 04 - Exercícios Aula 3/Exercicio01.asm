@@ -2,27 +2,26 @@
 
 %include "io.inc"
 
-section .text
+section .data
+    Rval    DB      0
+    Xval    DB      31
+    Yval    DB      52
+    Zval    DB      45
 
+section .text
 global CMAIN
 CMAIN:
     mov     ebp,    esp
     xor     eax,    eax
     xor     ebx,    ebx
     
-    mov     eax,    0
-    mov     ebx,    -5
+    mov     al,     [Yval]
+    mov     bl,     -1
+    imul    bl
+    add     al,     [Zval]
+    mov     bl,     -1
+    imul    bl
+    add     al,     [Xval]
+    mov     [Rval], al
     
-    cmp     eax,    ebx
-    jge     MAIORIGUAL
-    cmp     eax,    0
-    jz      ZERO    
-    ret
-    
-MAIORIGUAL:
-    mov     eax,    1
-    ret
-
-ZERO:
-    mov     eax,    -1
     ret
