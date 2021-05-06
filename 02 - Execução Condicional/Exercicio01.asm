@@ -29,10 +29,11 @@ CMAIN:
     
     ;caso 3
     ;o resultado da subtração é -99 (10011101)
+    ;01100101 + 11001000
     ;subtração: 101 + complemento de 2 de 200 > 127 (signed) (OF = 1)
     ;valor negativo (signed) (SF = 1)
     ;nibble menos significativo gerou carry (AF = 1)
-    ;NÃO ENTENDI O FLAG DE CARRY
+    ;Flag de carry, pois -200 necessita de 9 bits (CF = 1)
     mov     al,     101
     mov     dl,     200
     cmp     al,     dl
